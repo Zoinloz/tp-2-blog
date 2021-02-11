@@ -2,6 +2,8 @@
 
 ##Partie front react
 
-npm i
-npm install @material-ui/icons
-npm install @material-ui/core
+
+## `npm i`
+## `npm i @material-ui/core`
+## `npm i @material-ui/utils`
+## `npm i @material-ui/icons`
