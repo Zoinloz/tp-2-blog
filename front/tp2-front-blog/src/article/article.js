@@ -19,17 +19,7 @@ function Article({history}) {
         .catch((error) => { console.log(error) })
     }, []);
 
-    const handleShow = async (event) => {
-
-        event.preventDefault();
-        axios.delete("https://localhost:8000/article/")
-            .then((result) => {
-                console.log(result.data);
-                console.log(result.gender);
-                history.push('/article')
-            })
-
-    }
+   
 
    
     return (
@@ -62,7 +52,7 @@ function Article({history}) {
                             <td>{article.content}</td>
                             <td>{article.publicationDate}</td>
                             <td>{article.category}</td>
-                            <td> <Button href="/article/add"><VisibilityIcon /></Button><Button onClick={handleShow}><DeleteIcon /></Button> / </td>
+                            <td> <Button href={`/article/${article.id}`}><VisibilityIcon /></Button><Button ><DeleteIcon /></Button> / </td>
 
                         </tr>
                     ))}
