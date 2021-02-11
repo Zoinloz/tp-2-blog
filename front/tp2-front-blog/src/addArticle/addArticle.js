@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 
-function AddArticle({history}) {
+function AddArticle({history, match}) {
 
     const [data, setData] = useState({
 
@@ -21,6 +21,14 @@ function AddArticle({history}) {
         const dataInput = {
             title: data.title, subtitle: data.subtitle, image: data.image, content: data.content, publicationDate: data.publicationDate, category: data.category
         }
+        if (match.params.id != null) {
+            axios.post("https://localhost:8000/article/" + match.params.id + "/edit", dataInput)
+                .then((result) => {
+                    console.log(result.data);
+                    console.log(result.gender);
+                    history.push('/article')
+                })
+        } else {
         axios.post("https://localhost:8000/article/new", dataInput)
             .then((result) => {
                 console.log(result.data);
@@ -28,7 +36,30 @@ function AddArticle({history}) {
                 history.push('/article')
             })
 
-    }
+    }}
+
+    const [label, setLabel] = useState({
+        button: ''
+    })
+
+    React.useEffect(() => {
+        setLabel({ button: "ADD" })
+        if (match.params.id != null) {
+            setLabel({ button: "EDIT" })
+            axios.get('https://localhost:8000/article/detail?id=' + match.params.id).then(res => {
+                setData({
+                    title: res.data.title,
+                    subtitle: res.data.subtitle,
+                    image: res.data.image,
+                    content: res.data.content,
+                    publicationDate: res.data.publicationDate,
+                    category: res.data.category
+                })
+            }).catch((error) => { console.log(error) })
+        }
+    }, []
+    );
+    
 
   return (
 
@@ -106,7 +137,7 @@ function AddArticle({history}) {
                             <div className="row g-3 align-items-center pt-3 ">
                                
                             <div className="col-auto">
-                                <Button type="submit"> ADD </Button>
+                            <Button type="submit" >{label.button}</Button>
                                 </div>
                                 <div className="col-auto">
                                 <Button href="/article"> RETURN </Button>

@@ -54,7 +54,7 @@ const ArticleDetail = ({ match }) => {
                                     <Col>Category : {articles.category}</Col>
                                 </Row>
                                 <Row className="pt-2">
-                                <Col><Button >EDIT</Button></Col>
+                                <Col><Button href={`/article/add/${articles.id}`}>EDIT</Button></Col>
                             
                                 </Row>
                             </Container>

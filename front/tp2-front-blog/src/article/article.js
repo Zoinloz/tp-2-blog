@@ -52,7 +52,7 @@ function Article({history}) {
                             <td>{article.content}</td>
                             <td>{article.publicationDate}</td>
                             <td>{article.category}</td>
-                            <td> <Button href={`/article/${article.id}`}><VisibilityIcon /></Button><Button ><DeleteIcon /></Button> / </td>
+                            <td> <Button href={`/article/${article.id}`}><VisibilityIcon /></Button> <Button ><DeleteIcon /></Button></td>
 
                         </tr>
                     ))}
