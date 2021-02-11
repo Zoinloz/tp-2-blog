@@ -17,7 +17,7 @@ const NavBar = ({ history }) => {
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link href="/articles">Liste Articles</Nav.Link>
+      <Nav.Link href="/article">Liste Articles</Nav.Link>
       
     </Nav>
    
