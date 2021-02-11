@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button';
 function Home() {
   return (
 
-    <div>
-      SLT 
+    <div style={{ margin: 'auto' }}>
+      <h1>Bienvenue</h1> 
     </div>
   );
 }

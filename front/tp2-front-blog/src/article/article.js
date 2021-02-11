@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
 
@@ -19,10 +19,10 @@ function Article({history}) {
         .catch((error) => { console.log(error) })
     }, []);
 
-    const handleDelete = async (event) => {
-        
+    const handleShow = async (event) => {
+
         event.preventDefault();
-        axios.delete("https://localhost:8000/article/7")
+        axios.delete("https://localhost:8000/article/")
             .then((result) => {
                 console.log(result.data);
                 console.log(result.gender);
@@ -33,13 +33,13 @@ function Article({history}) {
 
    
     return (
-        <div>
+        <div  style={{paddingTop:'2%'}}>
 
 
-            <Button className="pt-40" variant="primary" href="/article/add">ADD</Button>
+            
 
 
-            <Table striped bordered hover style={{ width: '90%', margin: 'auto' }}>
+            <Table striped bordered hover style={{ width: '90%', margin: 'auto'}}>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -62,13 +62,16 @@ function Article({history}) {
                             <td>{article.content}</td>
                             <td>{article.publicationDate}</td>
                             <td>{article.category}</td>
-                            <td> <Button onClick={handleDelete}><DeleteIcon /></Button> / <Button href="/article/add"><EditIcon /></Button></td>
+                            <td> <Button href="/article/add"><VisibilityIcon /></Button><Button onClick={handleShow}><DeleteIcon /></Button> / </td>
 
                         </tr>
                     ))}
 
                 </tbody>
             </Table>
+            <div  style={{paddingLeft:'5%', paddingTop:'2%'}}>
+            <Button className="pt-40" variant="primary" href="/article/add">ADD Article</Button>
+            </div>
         </div>
     );
 }

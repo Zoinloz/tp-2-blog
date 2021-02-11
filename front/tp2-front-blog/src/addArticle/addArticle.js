@@ -108,6 +108,9 @@ function AddArticle({history}) {
                             <div className="col-auto">
                                 <Button type="submit"> ADD </Button>
                                 </div>
+                                <div className="col-auto">
+                                <Button href="/article"> RETURN </Button>
+                                </div>
                              
 
                             </div>
