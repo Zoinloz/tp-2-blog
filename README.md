@@ -1,4 +1,4 @@
-# tp-2-blog
+# tp-2-blog (BLANC Kévin)
 
 ## Partie front react
 
